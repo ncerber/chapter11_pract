@@ -29,5 +29,15 @@ public class Main {
         } catch (BadPasswordException e) {
             System.out.println("check3: "+e.getMessage());
         }
+
+        CheckRegistrationData check4 = new CheckRegistrationData("12112ewewSRx","qwq@sdd.2u");
+        try {
+            check4.checkData();
+            System.out.println("check4: Registaration data is correct");
+        } catch (BadEmailException e) {
+            System.out.println("check4: "+e.getMessage());
+        } catch (BadPasswordException e) {
+            System.out.println("check4: "+e.getMessage());
+        }
     }
 }

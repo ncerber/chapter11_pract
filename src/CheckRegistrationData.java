@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CheckRegistrationData {
     private String password;
     private String eMail;
@@ -43,7 +46,16 @@ public class CheckRegistrationData {
         }
     }
 
+    private void checkEmail() throws  BadEmailException{
+        Pattern pattern = Pattern.compile("[a-zA-Z]+\\@[a-zA-Z]+\\.[a-zA-Z]+");
+        Matcher matcher = pattern.matcher(eMail);
+        if(!matcher.find()){
+            throw new BadEmailException("Incorrect email address");
+        }
+    }
+
     public void checkData() throws BadEmailException, BadPasswordException {
         checkPassword();
+        checkEmail();
     }
 }
